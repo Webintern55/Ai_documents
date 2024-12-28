@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite 2k24</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            position: relative;
+        }
+
+        /* Logo Styles */
+        .logo {
+            font-size: 2.5rem;
+            color: #007BFF;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Navigation Styles */
+        .navigation {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007BFF;
+            text-decoration: underline;
+        }
+
+        /* Black Line Below Navigation */
+        .header::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Welcome Section Styles */
+        .welcome-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 1rem;
+            background-color: #fff;
+            gap: 0.5rem;
+        }
+
+        .welcome-section img {
+            max-width: 250px;
+            width: 100%;
+            margin-right: 1rem;
+        }
+
+        .welcome-text {
+            max-width: 500px;
+            text-align: left;
+            margin-left: 0;
+        }
+
+        .welcome-section h2 {
+            font-size: 2rem;
+            color: #007BFF;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-section h3 {
+            font-size: 1.5rem;
+            color: #ff6347;
+            margin-bottom: 0.8rem;
+        }
+
+        .welcome-section p {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-section .buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .welcome-section .buttons a {
+            text-decoration: none;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .welcome-section .buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: #fff;
+            padding: 2rem 1rem;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        .footer h4 {
+            font-size: 1.5rem;
+            color: #007BFF;
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .footer .footer-button {
+            text-decoration: none;
+            background-color: #333;
+            color: #fff;
+            padding: 0.7rem 1.2rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer .footer-button:hover {
+            background-color: #007BFF;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">ELITE 2k24</h1>
+            <nav class="navigation">
+                <ul class="nav-links">
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <img src="../Images/elite.webp" alt="Shield Logo">
+        <div class="welcome-text">
+            <h2>Elite 2k24 Welcomes You!</h2>
+            <h3>Registration Closed!</h3>
+            <p>Consider this as an opportunity to participate and win prizes.<br>
+                Make sure to register early and get updates regarding the events you participate.<br>
+                Let the competition bring fresh minds to explore and bring heat to the events.</p>
+            <div class="buttons">
+                <a href="https://maps.app.goo.gl/heuEnmLWfDQixVci6" target="_blank">Event Location</a>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Elite+2k24+Event&dates=20241215T100000Z/20241215T150000Z&details=Join+us+for+the+Elite+2k24+event&location=Online&sf=true&output=xml"
+                    target="_blank">Add to Calendar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <h4>6th National Level Technical Symposium</h4>
+        <p>Elite (Group of talented Students) is the student Association of Computer Science and Applications
+            Department. It has been functioning over the years with the objectives of promoting student activities of
+            organizing and participating in co-curricular activities by the students of the Department.</p>
+        <a href="#events" class="footer-button">Explore Events</a>
+    </footer>
+</body>
+
+</html>

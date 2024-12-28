@@ -1,0 +1,404 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite 2k24 UI</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </link>
+</head>
+
+<body class="bg-white font-sans">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        const events = [
+            {
+                title: "K Corner",
+                imgSrc: "https://placehold.co/300x150",
+                imgAlt: "Placeholder image for K Corner event",
+                modalId: "kCornerModal",
+                details: {
+                    title: "K Corner Event Details",
+                    rules: [
+                        "Team can have maximum of 2 participants.",
+                        "Certificates will be provided for all participants.",
+                        "First and second prizes are awarded based on judgment.",
+                        "Topic should be technical and educational oriented.",
+                        "Maximum 20 slides are required.",
+                        "Explanation time is minimum 10 minutes.",
+                        "Preliminaries will be conducted.",
+                        "Practical sessions are also allowed.",
+                        "Participants should bring their own Laptop.",
+                        "Explanation must be in English."
+                    ],
+                    contact: {
+                        coordinator: "Pavatharani K",
+                        coordinatorPhone: "9524433829",
+                        staff: "Dr. S. Babu",
+                        staffPhone: "9444275366"
+                    }
+                }
+            },
+            {
+                title: "Software Debugging",
+                imgSrc: "https://placehold.co/300x150",
+                imgAlt: "Placeholder image for Software Debugging event",
+                modalId: "softwareDebuggingModal",
+                details: {
+                    title: "Software Debugging Event Details",
+                    rules: [
+                        "One participant per team.",
+                        "Certificates will be provided for all participants.",
+                        "First and second prizes are awarded based on judgment.",
+                        "Students have to maintain a decent dress code."
+                    ],
+                    rounds: [
+                        {
+                            title: "First Round",
+                            points: [
+                                "This round consists of 20 questions",
+                                "Time duration: 20 minutes",
+                                "Maximum numbers of outputs should be given, and the respective logics must be answered",
+                                "The best performances are promoted for GRAND FINALE"
+                            ]
+                        },
+                        {
+                            title: "Final Round",
+                            points: [
+                                "5 programs are given to individuals on the spot",
+                                "Time duration: 45 minutes",
+                                "The participants who debugged the maximum number of programs will be considered as best performer",
+                                "Best performances are rewarded"
+                            ]
+                        }
+                    ],
+                    contact: {
+                        coordinator: "Sruthi S",
+                        coordinatorPhone: "7338999323",
+                        staff: "Mr. M. KrishnaMoorthy",
+                        staffPhone: "9443308729"
+                    }
+                }
+            },
+            {
+                title: "Paper Presentation",
+                imgSrc: "https://placehold.co/300x150",
+                imgAlt: "Placeholder image for Paper Presentation event",
+                modalId: "paperPresentationModal",
+                details: {
+                    title: "Paper Presentation Event Details",
+                    rules: [
+                        "Team can have maximum of 2 participants.",
+                        "First and Second prizes are awarded based on judgment.",
+                        "Students have to maintain a decent Dress code.",
+                        "Work should be original and in the specified format.",
+                        "Registered candidates are directed to mail the complete paper in IEEE format on or before 3th October 2024 to (elite mail id ) with <paper title> in the Subject field of the mail.",
+                        "Full paper must be submitted in IEEE format only and should not exceed 6 pages.",
+                        "Shortlisted candidates will be informed by E-Mail ID or by Mobile by 6th October 2024 and they would have to send reply confirming their participation on or before 07th October 2024.",
+                        "The paper which is already published in anywhere will not be qualified.",
+                        "The selected candidates should submit a soft copy and hard copy of the paper (2 copies) with abstract at the time of presentation.",
+                        "(in A4 sheets not exceeding ten pages - including references, tables and figures).",
+                        "Decision of the Judges and the event heads shall be treated as final and binding on all and cannot be contested.",
+                        "Directly copying from the internet is strongly discouraged and will not be entertained."
+                    ],
+                    presentationRules: [
+                        "The paper submitted will have to be presented during the event.",
+                        "The participants have to present their papers in Power Point (ppt/pptx) format only.",
+                        "The Teams will get 7 minutes to present their paper.",
+                        "It will be followed by a question and answer session for the next 3 Minutes.",
+                        "The participants will have to present their papers in MS-Power Point (ppt) format only.",
+                        "The organizers reserve the right to change/update the rules of the contest at any point of time and will do their best to inform to participants of the same.",
+                        "However, it is ultimately the responsibility of the teams to keep themselves updated."
+                    ],
+                    contact: {
+                        coordinator: "D. Dinesh",
+                        coordinatorPhone: "9677308181",
+                        staff: "V. Ramesh",
+                        staffPhone: "9952494214"
+                    }
+                }
+            },
+            {
+                title: "Poster Presentation",
+                imgSrc: "https://placehold.co/300x150",
+                imgAlt: "Placeholder image for Poster Presentation event",
+                modalId: "posterPresentationModal",
+                details: {
+                    title: "Poster Presentation Event Details",
+                    rules: [
+                        "A team can have maximum of 2 participants.",
+                        "Certificates will be provided for all the participants.",
+                        "First and second prizes will be awarded based on the judgment.",
+                        "Poster size must be 40*60.",
+                        "Make theme on it and collect information, pictures and make your own art clips.",
+                        "Bring out your creativity by arranging your theme on a chart.",
+                        "Poster explanation time is of 5 minutes.",
+                        "Every poster should be presented technically."
+                    ],
+                    contact: {
+                        coordinator: "T. Datchna Moorthy",
+                        coordinatorPhone: "6380279916",
+                        staff: "Dr. K. Srinvanasan",
+                        staffPhone: "9486119260"
+                    }
+                }
+            },
+            {
+                title: "Group Discussions",
+                imgSrc: "https://placehold.co/300x150",
+                imgAlt: "Placeholder image for Group Discussions event",
+                modalId: "groupDiscussionModal",
+                details: {
+                    title: "Group Discussion Event Details",
+                    rules: [
+                        "Only registered students are allowed to participate in Group Discussion.",
+                        "Participants can range from 7 to 12 in a group based on the number of the students registered.",
+                        "Average duration of the GD is 30 minutes.",
+                        "Sometimes, the panelist or judges can extend the discussion for more than 30 minutes.",
+                        "They can also end the discussion in between.",
+                        "Process of GD may repeat to filter the best speakers.",
+                        "Result will be announced by the Judge and it is the final decision."
+                    ],
+                    process: [
+                        "The process of a Group Discussion starts with the announcement of the topic.",
+                        "The given topic could be technical, factual, or case study.",
+                        "Before beginning with the discussion, the preparation time of 2 to 3 minutes is given.",
+                        "The time can also extend in case of a long case statement.",
+                        "Any participant in the group can initiate the discussion.",
+                        "After the lead participant, anyone in the group can continue the discussion.",
+                        "Similarly, everyone gets the chance to speak.",
+                        "One after another, participants in the group expresses their views on the given topic.",
+                        "It ends when the panelist stops the discussion or may ask one or more than one participant to summarize the GD.",
+                        "Whenever you are asked for the summary, remember to cover the discussed points.",
+                        "The summary cannot include the words that were not part of the discussion.",
+                        "The participants that were quite among the discussion are generally asked to summarize it, which is a good opportunity to present their views.",
+                        "But, it does not mean that everyone should be quite.",
+                        "The summary should include the essential discussed points and the conclusion of the discussion.",
+                        "The final scores are calculated.",
+                        "Based on the performance of each participant, the judge will give the final result and it is the final decision."
+                    ],
+                    contact: {
+                        coordinator: "Jeeva",
+                        coordinatorPhone: "9080185815",
+                        staff: "Dr. R. Anatharayanan",
+                        staffPhone: "8220767277"
+                    }
+                }
+            },
+            {
+                title: "Mock Interview",
+                imgSrc: "https://placehold.co/300x150",
+                imgAlt: "Placeholder image for Mock Interview event",
+                modalId: "mockInterviewModal",
+                details: {
+                    title: "Mock Interview Event Details",
+                    rules: [
+                        "The date and timings of the mock is given by the experts according to their feasibility and the interviews are conducted according to those timings.",
+                        "Mock interviews are conducted for the registered students only and it is offline mode.",
+                        "The order of students selected for panel is based upon CGPA or the opinion of the experts or the coordinators.",
+                        "Students have to bring their resume and other relevant documents else not permit to attend the mock interview.",
+                        "Strictly follow the dress code.",
+                        "If the students are unable to attend the mock interview due to any reason, they have to intimate earliest, no more chance will be provide further.",
+                        "Result will be announced by the Judge and it is the final decision."
+                    ],
+                    contact: {
+                        coordinator: "M. Bharathi priyan",
+                        coordinatorPhone: "6385301623",
+                        staff: "Dr. M.kannan",
+                        staffPhone: "9443690287"
+                    }
+                }
+            },
+            {
+                title: "Quiz",
+                imgSrc: "https://placehold.co/300x150",
+                imgAlt: "Placeholder image for Quiz event",
+                modalId: "quizModal",
+                details: {
+                    title: "Quiz Event Details",
+                    rules: [
+                        "Number of Nodes per Network.",
+                        "All participating Nodes will be certified, with participation certificate.",
+                        "Only two successful Networks are selected by the Administrator.",
+                        "Any Wi-Fi can register on the particular network ON-SPOT for free.",
+                        "The nodes can be registered in advance by visiting our website.",
+                        "Number of rounds: 3.",
+                        "The network which has proper connectivity with higher speed will be given priority to update for further rounds."
+                    ],
+                    rounds: [
+                        {
+                            title: "Round 1: Entertainment Based Connection",
+                            points: [
+                                "Game name both indoor and outdoor",
+                                "Mathematical operations",
+                                "Letter Shuffle"
+                            ]
+                        },
+                        {
+                            title: "Round 2: Technical",
+                            points: [
+                                "Picture merging only computer parts",
+                                "Logo",
+                                "Tags",
+                                "Famous personality"
+                            ]
+                        },
+                        {
+                            title: "Round 3: Think and ping",
+                            points: [
+                                "Proverb",
+                                "Find the difference",
+                                "Inventions and abbreviation",
+                                "Allocation of time will be based on rounds",
+                                "If any question is left out, it is passed to the next node, and marks will be given based on it",
+                                "The rules will be subjected to change"
+                            ]
+                        }
+                    ],
+                    contact: {
+                        coordinator: "R. Sowmiya",
+                        coordinatorPhone: "9626371781",
+                        alternativePhone: "7550282730",
+                        staff: "T. Nirmal Raj",
+                        staffPhone: "9498028711"
+                    }
+                }
+            },
+            {
+                title: "Short Film",
+                imgSrc: "https://placehold.co/300x150",
+                imgAlt: "Placeholder image for Short Film event",
+                modalId: "shortFilmModal",
+                details: {
+                    title: "Short Film Event Details",
+                    rules: [
+                        "The time duration allocated for short film will be 10 minutes.",
+                        "The story or concept of this film should be good and keep non-violence.",
+                        "Judge's decision will be treated as final.",
+                        "Judgement will be based on the clarity of acting, thoughts, humor, expressions and screenplay.",
+                        "Team will be disqualified on vulgarity or any obscene in the performance.",
+                        "Language preferences: English or Tamil."
+                    ],
+                    contact: {
+                        coordinator: "D. Thulasingham",
+                        coordinatorPhone: "6380580277",
+                        staff: "R. Saravanan",
+                        staffPhone: "9842038898"
+                    }
+                }
+            }
+        ];
+
+        const EventCard = ({ event, onClick }) => (
+            <div className="card bg-blue-800 rounded-lg shadow-lg flex flex-col">
+                <img src={event.imgSrc} alt={event.imgAlt} className="w-full h-40 object-cover" />
+                <div className="card-content p-4 text-white flex flex-col justify-between flex-grow">
+                    <h3 className="text-lg font-semibold mb-2">{event.title}</h3>
+                    <button className="view-details bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600" onClick={onClick}>
+                        View Details
+                    </button>
+                </div>
+            </div>
+        );
+
+        const Modal = ({ event, isOpen, onClose }) => {
+            if (!isOpen) return null;
+
+            return (
+                <div className="modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                    <div className="modal-content bg-blue-800 text-white p-6 rounded-lg w-11/12 max-w-2xl relative">
+                        <span className="close-btn absolute top-2 right-4 text-2xl cursor-pointer" onClick={onClose}>&times;</span>
+                        <h2 className="text-2xl font-bold mb-4">{event.details.title}</h2>
+                        <h3 className="text-xl font-semibold mb-2">Event Rules & Regulations</h3>
+                        <p className="mb-4">Mail for submission as per event rules: <a href="mailto:elite2k24@kanchiuniv.ac.in" className="text-green-400">elite2k24@kanchiuniv.ac.in</a></p>
+                        <ol className="list-decimal list-inside mb-4">
+                            {event.details.rules.map((rule, index) => (
+                                <li key={index} className="mb-2">{rule}</li>
+                            ))}
+                        </ol>
+                        {event.details.rounds && (
+                            <>
+                                {event.details.rounds.map((round, index) => (
+                                    <div key={index} className="mb-4">
+                                        <h4 className="text-lg font-semibold mb-2">{round.title}</h4>
+                                        <ol className="list-decimal list-inside">
+                                            {round.points.map((point, idx) => (
+                                                <li key={idx} className="mb-2">{point}</li>
+                                            ))}
+                                        </ol>
+                                    </div>
+                                ))}
+                            </>
+                        )}
+                        {event.details.presentationRules && (
+                            <>
+                                <h3 className="text-xl font-semibold mb-2">Presentation Rules</h3>
+                                <ol className="list-decimal list-inside mb-4">
+                                    {event.details.presentationRules.map((rule, index) => (
+                                        <li key={index} className="mb-2">{rule}</li>
+                                    ))}
+                                </ol>
+                            </>
+                        )}
+                        {event.details.process && (
+                            <>
+                                <h3 className="text-xl font-semibold mb-2">Process</h3>
+                                <ol className="list-decimal list-inside mb-4">
+                                    {event.details.process.map((step, index) => (
+                                        <li key={index} className="mb-2">{step}</li>
+                                    ))}
+                                </ol>
+                            </>
+                        )}
+                        <div className="contact-info">
+                            <h3 className="text-xl font-semibold mb-2">Contact Information</h3>
+                            <p className="mb-2">Event Coordinator: {event.details.contact.coordinator}</p>
+                            <p className="mb-2">Phone: <a href={`tel:${event.details.contact.coordinatorPhone}`} className="text-green-400">{event.details.contact.coordinatorPhone}</a></p>
+                            <p className="mb-2">Staff-in-charge: {event.details.contact.staff}</p>
+                            <p className="mb-2">Phone: <a href={`tel:${event.details.contact.staffPhone}`} className="text-green-400">{event.details.contact.staffPhone}</a></p>
+                            {event.details.contact.alternativePhone && (
+                                <p className="mb-2">Alternative Phone: <a href={`tel:${event.details.contact.alternativePhone}`} className="text-green-400">{event.details.contact.alternativePhone}</a></p>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const App = () => {
+            const [activeModal, setActiveModal] = useState(null);
+
+            const openModal = (modalId) => {
+                setActiveModal(modalId);
+            };
+
+            const closeModal = () => {
+                setActiveModal(null);
+            };
+
+            return (
+                <div className="container mx-auto p-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {events.map((event, index) => (
+                            <EventCard key={index} event={event} onClick={() => openModal(event.modalId)} />
+                        ))}
+                    </div>
+                    {events.map((event, index) => (
+                        <Modal key={index} event={event} isOpen={activeModal === event.modalId} onClose={closeModal} />
+                    ))}
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>

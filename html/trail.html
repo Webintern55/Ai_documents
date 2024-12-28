@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Elite 2k24
+    </title>
+    <script src="https://unpkg.com/react/umd/react.development.js">
+    </script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js">
+    </script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js">
+    </script>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .elite-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000080;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: #000080;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .event-container {
+            display: flex;
+            padding: 20px;
+        }
+
+        .event-image {
+            width: 50%;
+        }
+
+        .event-text {
+            width: 50%;
+            padding: 20px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .map-button {
+            background-color: #000080;
+            color: white;
+        }
+
+        .calendar-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .brochure-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .brochure-buttons {
+            margin-top: 20px;
+        }
+
+        .brochure-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .brochure-button:hover {
+            background-color: #0056b3;
+        }
+
+        .invitation-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .invitation-container img {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .about-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .explore-button {
+            padding: 1rem 2rem;
+            background-color: #e9ecef;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-container {
+            position: relative;
+            padding: 20px;
+        }
+
+        .contact-logo {
+            width: 200px;
+            height: auto;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .web-icon {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px;
+        }
+
+        .social-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .social-icons {
+            display: flex;
+        }
+
+        .social-icon {
+            margin: 0 10px;
+        }
+
+        .social-icon img {
+            width: 15px;
+            height: 15px;
+        }
+
+        .developer-info {
+            font-size: 12px;
+            color: gray;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #1F3A93;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+            color: #fff;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-content h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .view-details {
+            align-self: flex-start;
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-details:hover {
+            background-color: #45a049;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #1F3A93;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            max-height: 80%;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .close-btn:hover {
+            color: white;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-info a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-container">
+        <div class="elite-text">
+            E | L | I | T | E | 2 | 0 | 2 | 4 |
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="#events">
+                    Events
+                </a>
+            </li>
+            <li>
+                <a href="#about">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="#contact">
+                    Contact
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="event-container" id="events">
+        <img alt="Elite 2k24 Event - A large crowd gathered in a hall with a stage and banners" class="event-image"
+            height="400"
+            src="https://storage.googleapis.com/a1aa/image/M4VrRDqowWJec6TfKaBSQy9wrMarwo5xkDueIIboqYLwzDePB.jpg"
+            width="600" />
+        <div class="event-text">
+            <h2>
+                Elite 2k24
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </p>
+            <div class="button-container">
+                <button class="button map-button">
+                    Event Location
+                </button>
+                <button class="button calendar-button">
+                    Add to Calendar
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="brochure-container">
+        <h2>
+            Download Brochure
+        </h2>
+        <div class="brochure-buttons">
+            <button class="brochure-button" id="downloadBtn">
+                Download
+            </button>
+            <button class="brochure-button" id="enquireBtn">
+                Enquire Us
+            </button>
+        </div>
+    </div>
+    <div class="invitation-container">
+        <img alt="Invitation - A formal invitation card with elegant design and event details" height="600"
+            src="https://storage.googleapis.com/a1aa/image/GX5D3dJhVaIhOB2gecdGha1fk3UnNqIBZ2us28kzWv8E6BfnA.jpg"
+            width="800" />
+    </div>
+    <div class="about-container" id="about">
+        <h1>
+            ELITE 2k24
+        </h1>
+        <h2>
+            6th National Level Technical Symposium
+        </h2>
+        <p>
+            Elite (Group of Talented Students) is a student association of the Computer Science and Applications
+            Department.
+        </p>
+        <a class="cta-button" href="https://kanchiuniv.ac.in/">
+            Know More About SCSVMV
+        </a>
+        <button class="explore-button">
+            Explore Events
+        </button>
+    </div>
+    <div class="contact-container" id="contact">
+        <img alt="Elite Logo - A logo with the text 'Elite' and a symbol representing excellence" class="contact-logo"
+            height="200"
+            src="https://storage.googleapis.com/a1aa/image/0NrnHAohdWqzJluRlWDvZIyedHGvpgfN1wA63GTYiT6s5BfnA.jpg"
+            width="200" />
+        <p class="contact-info">
+            President of Elite: A.R. Rithika
+            <br />
+            Mobile No: +918870308344
+        </p>
+        <a href="https://kanchiuniv.ac.in/" target="_blank">
+            <img alt="Website - An icon representing a website" class="web-icon" height="30"
+                src="https://storage.googleapis.com/a1aa/image/5gtefU0F5gu9Kk0y0pWXqavpfbmr4dazck0VfBS8A8jkmH8PB.jpg"
+                width="30" />
+        </a>
+    </div>
+    <div class="social-container">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/scsvmvdu/" target="_blank">
+                <img alt="Instagram - Instagram logo" height="15"
+                    src="https://storage.googleapis.com/a1aa/image/1YDfmIoiEWUGFqd2fQ0cfxqkW2olZ0hJMHoe49MuN6fxOP4fE.jpg"
+                    width="15" />
+            </a>
+            <a href="https://x.com/scsvmvdu" target="_blank">
+                <img alt="Twitter - Twitter logo" height="15"
+                    src="https://storage.googleapis.com/a1aa/image/TGs8gZQKkYrVI11GmNktfKGwLlUoogdJsfJDqt4K6VKr5BfnA.jpg"
+                    width="15" />
+            </a>
+            <a href="https://www.facebook.com/SCSVMVDU/" target="_blank">
+                <img alt="Facebook - Facebook logo" height="15"
+                    src="https://storage.googleapis.com/a1aa/image/n5lfLxjeH1me6IY7f8LIr9Xuv7eJgreuP1fA1FQiDx5b38gfTA.jpg"
+                    width="15" />
+            </a>
+            <a href="https://www.linkedin.com/school/scsvmvuniv/" target="_blank">
+                <img alt="LinkedIn - LinkedIn logo" height="15"
+                    src="https://storage.googleapis.com/a1aa/image/7M01xBG52ioxCFyeHGPBOab0uCrnsjYuePHlAkHaGv8x5BfnA.jpg"
+                    width="15" />
+            </a>
+            <a href="https://www.youtube.com/@SCSVMVDU" target="_blank">
+                <img alt="YouTube - YouTube logo" height="15"
+                    src="https://storage.googleapis.com/a1aa/image/BvAy8JpWg4bKE9rhBrTQIwrQQuifsygx4NNQrdrfx9hz5BfnA.jpg"
+                    width="15" />
+            </a>
+        </div>
+        <div class="developer-info">
+            Developed by @itsyuviyuviyuvi
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <img alt="K Corner - A group of students discussing a project" height="400"
+                src="https://storage.googleapis.com/a1aa/image/HmZeKGq6NuwrEiWQuyRONgDULiDern5fSEJI8UyGuCi7zDePB.jpg"
+                width="600" />
+            <div class="card-content">
+                <h3>
+                    K Corner
+                </h3>
+                <a class="view-details" href="#" onclick="openKCornerModal()">
+                    View Details
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <img alt="Software Debugging - A student working on a computer with code on the screen" height="400"
+                src="https://storage.googleapis.com/a1aa/image/cyuVYHJMeTWzDC6efYWRZchYGJQmq0IUztgpRDwnEMBA0DePB.jpg"
+                width="600" />
+            <div class="card-content">
+                <h3>
+                    Software Debugging
+                </h3>
+                <a class="view-details" href="#" onclick="openSoftwareDebuggingModal()">
+                    View Details
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <img alt="Paper Presentation - A student presenting a paper in front of an audience" height="400"
+                src="https://storage.googleapis.com/a1aa/image/esv2s8HtxbUTQiiaqzYOvmdxoJR4azg9H8weT6PPV5j55BfnA.jpg"
+                width="600" />
+            <div class="card-content">
+                <h3>
+                    Paper Presentation
+                </h3>
+                <a class="view-details" href="#" onclick="openPaperPresentationModal()">
+                    View Details
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <img alt="Poster Presentation - A student explaining a poster to a group of people" height="400"
+                src="https://storage.googleapis.com/a1aa/image/N8e6NF0m86z0YSBx3rridBwtyM0o6rpAMwl16cPR7s798gfTA.jpg"
+                width="600" />
+            <div class="card-content">
+                <h3>
+                    Poster Presentation
+                </h3>
+                <a class="view-details" href="#" onclick="openPosterPresentationModal()">
+                    View Details
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <img alt="Group Discussions - A group of students engaged in a discussion" height="400"
+                src="https://storage.googleapis.com/a1aa/image/iFLUCHwgXwZwDtyJo9gnovMTMsxTQ8zFTkyM4J48skbhegfTA.jpg"
+                width="600" />
+            <div class="card-content">
+                <h3>
+                    Group Discussions
+                </h3>
+                <a class="view-details" href="#" onclick="openGroupDiscussionModal()">
+                    View Details
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <img alt="Mock Interview - A student being interviewed by a panel" height="400"
+                src="https://storage.googleapis.com/a1aa/image/4Gf9OhsGnR0wfU1T4Stp2K2ZeXA7QaHZpdqufI1VpzQ7nH8PB.jpg"
+                width="600" />
+            <div class="card-content">
+                <h3>
+                    Mock Interview
+                </h3>
+                <a class="view-details" href="#" onclick="openMockInterviewModal()">
+                    View Details
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <img alt="Quiz - A group of students participating in a quiz competition" height="400"
+                src="https://storage.googleapis.com/a1aa/image/63AqCe4B4sTrbCkfyPHoj7GZPg9xS3nsE1qvdxdBLxF05BfnA.jpg"
+                width="600" />
+            <div class="card-content">
+                <h3>
+                    Quiz
+                </h3>
+                <a class="view-details" href="#" onclick="openQuizModal()">
+                    View Details
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <img alt="Short Film - A group of students shooting a short film" height="400"
+                src="https://storage.googleapis.com/a1aa/image/ULBPB0Q9hYIhDdlqiYQc6VrRzLHYMUQzxuKFre1zXmXB9gfTA.jpg"
+                width="600" />
+            <div class="card-content">
+                <h3>
+                    Short Film
+                </h3>
+                <a class="view-details" href="#">
+                    View Details
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="kCornerModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeKCornerModal()">
+                ×
+            </span>
+            <h2>
+                K Corner Event Details
+            </h2>
+            <h3>
+                Event Rules &amp; Regulations
+            </h3>
+            <p>
+                Mail for submission as per event rules:
+                <a href="mailto:elite2k24@kanchiuniv.ac.in">
+                    elite2k24@kanchiuniv.ac.in
+                </a>
+            </p>
+            <ol>
+                <li>
+                    Team can have maximum of 2 participants.
+                </li>
+                <li>
+                    Certificates will be provided for all participants.
+                </li>
+                <li>
+                    First and second prizes are awarded based on judgment.
+                </li>
+                <li>
+                    Topic should be technical and educational oriented.
+                </li>
+                <li>
+                    Maximum 20 slides are required.
+                </li>
+                <li>
+                    Explanation time is minimum 10 minutes.
+                </li>
+                <li>
+                    Preliminaries will be conducted.
+                </li>
+                <li>
+                    Practical sessions are also allowed.
+                </li>
+                <li>
+                    Participants should bring their own Laptop.
+                </li>
+                <li>
+                    Explanation must be in English.
+                </li>
+            </ol>
+            <div class="contact-info">
+                <h3>
+                    Contact Information
+                </h3>
+                <p>
+                    Event Coordinator: Pavatharani K
+                </p>
+                <p>
+                    Phone:
+                    <a href="tel:9524433829">
+                        9524433829
+                    </a>
+                </p>
+                <p>
+                    Staff-in-charge: Dr. S. Babu
+                </p>
+                <p>
+                    Phone:
+                    <a href="tel:9444275366">
+                        9444275366
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="softwareDebuggingModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeSoftwareDebuggingModal()">
+                ×
+            </span>
+            <h2>
+                Software Debugging Event Details
+            </h2>
+            <h3>
+                Event Rules &amp; Regulations
+            </h3>
+            <p>
+                Mail for submission as per event rules:
+                <a href="mailto:elite2k24@kanchiuniv.ac.in">
+                    elite2k24@kanchiuniv.ac.in
+                </a>
+            </p>
+            <ol>
+                <li>
+                    One participant per team.
+                </li>
+                <li>
+                    Certificates will be provided for all participants.
+                </li>
+                <li>
+                    First and second prizes are awarded based on judgment.
+                </li>
+                <li>
+                    Students have to maintain a decent dress code.
+                </li>
+            </ol>
+            <h3>
+                Rounds
+            </h3>
+            <h4>
+                First Round:
+            </h4>
+            <ol>
+                <li>
+                    This round consists of 20 questions
+                </li>
+                <li>
+                    Time duration: 20 minutes
+                </li>
+                <li>
+                    Maximum numbers of outputs should be given, and the respective logics must be answered
+                </li>
+                <li>
+                    The best performances are promoted for GRAND FINALE
+                </li>
+            </ol>
+            <h4>
+                Final Round:
+            </h4>
+            <ol>
+                <li>
+                    5 programs are given to individuals on the spot
+                </li>
+                <li>
+                    Time duration: 45 minutes
+                </li>
+                <li>
+                    The participants who debugged the maximum number of programs will be considered as best performer
+                </li>
+                <li>
+                    Best performances are rewarded
+                </li>
+            </ol>
+            <div class="contact-info">
+                <h3>
+                    Contact Information
+                </h3>
+                <p>
+                    Event Coordinator: Sruthi S
+                </p>
+                <p>
+                    Phone:
+                    <a href="tel:7338999323">
+                        7338999323
+                    </a>
+                </p>
+                <p>
+                    Staff-in-charge: Mr. M. KrishnaMoorthy
+                </p>
+                <p>
+                    Phone:
+                    <a href="tel:9443308729">
+                        9443308729
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="paperPresentationModal">
+        <div class="modal-content">
+            &lt;span class="close-btn"
+        </div>
+    </div>
+</body>
+
+</html>

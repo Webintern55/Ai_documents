@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite 2k24</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .elite-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000080;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: #000080;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Event Section */
+        .event-container {
+            display: flex;
+            padding: 20px;
+        }
+
+        .event-image {
+            width: 50%;
+        }
+
+        .event-text {
+            width: 50%;
+            padding: 20px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .map-button {
+            background-color: #000080;
+            color: white;
+        }
+
+        .calendar-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Brochure Section */
+        .brochure-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .brochure-buttons {
+            margin-top: 20px;
+        }
+
+        .brochure-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .brochure-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Invitation Section */
+        .invitation-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .invitation-container img {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        /* About Section */
+        .about-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .explore-button {
+            padding: 1rem 2rem;
+            background-color: #e9ecef;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            position: relative;
+            padding: 20px;
+        }
+
+        .contact-logo {
+            width: 200px;
+            height: auto;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .web-icon {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px;
+        }
+
+        /* Social Links Section */
+        .social-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .social-icons {
+            display: flex;
+        }
+
+        .social-icon {
+            margin: 0 10px;
+        }
+
+        .social-icon img {
+            width: 15px;
+            /* Reduced size */
+            height: 15px;
+            /* Reduced size */
+        }
+
+        .developer-info {
+            font-size: 12px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="nav-container">
+        <div class="elite-text">E | L | I | T | E | 2 | 0 | 2 | 4 |</div>
+        <ul class="nav-links">
+            <li><a href="elite(8).html">Events</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Event Section -->
+    <div class="event-container" id="events">
+        <img src="../Images/elite.webp" class="event-image" alt="Elite 2k24 Event">
+        <div class="event-text">
+            <h2>Elite 2k24</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+            <div class="button-container">
+                <button class="button map-button">Event Location</button>
+                <button class="button calendar-button">Add to Calendar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Brochure Section -->
+    <div class="brochure-container">
+        <h2>Download Brochure</h2>
+        <div class="brochure-buttons">
+            <button class="brochure-button" id="downloadBtn">Download</button>
+            <button class="brochure-button" id="enquireBtn">Enquire Us</button>
+        </div>
+    </div>
+
+    <!-- Invitation Section -->
+    <div class="invitation-container">
+        <img src="../Images/invitation.webp" alt="Invitation">
+    </div>
+
+    <!-- About Section -->
+    <div class="about-container" id="about">
+        <h1>ELITE 2k24</h1>
+        <h2>6th National Level Technical Symposium</h2>
+        <p>Elite (Group of Talented Students) is a student association of the Computer Science and Applications
+            Department.</p>
+        <a href="https://kanchiuniv.ac.in/" class="cta-button">Know More About SCSVMV</a>
+        <button class="explore-button">Explore Events</button>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-container" id="contact">
+        <img src="../Images/elite.webp" alt="Elite Logo" class="contact-logo">
+        <p class="contact-info">President of Elite: A.R. Rithika<br>Mobile No: +918870308344</p>
+        <a href="https://kanchiuniv.ac.in/" target="_blank">
+            <img src="../Images/web.jpg" alt="Website" class="web-icon">
+        </a>
+    </div>
+
+    <!-- Social Links Section -->
+    <div class="social-container">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/scsvmvdu/" target="_blank"><img src="../Images/insta.jpg"
+                    alt="Instagram"></a>
+            <a href="https://x.com/scsvmvdu" target="_blank"><img src="../Images/twitter.jpg" alt="Twitter"></a>
+            <a href="https://www.facebook.com/SCSVMVDU/" target="_blank"><img src="../Images/facebook.jpg"
+                    alt="Facebook"></a>
+            <a href="https://www.linkedin.com/school/scsvmvuniv/" target="_blank"><img src="../Images/linkden.jpg"
+                    alt="LinkedIn"></a>
+            <a href="https://www.youtube.com/@SCSVMVDU" target="_blank"><img src="../Images/yy.jpg" alt="YouTube"></a>
+        </div>
+        <div class="developer-info">Developed by @itsyuviyuviyuvi</div>
+    </div>
+
+    <script>
+        const downloadBtn = document.getElementById('downloadBtn');
+        const enquireBtn = document.getElementById('enquireBtn');
+
+        downloadBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.href = '../Images/invitation.webp';
+            link.download = 'invitation.webp';
+            link.click();
+        });
+
+        enquireBtn.addEventListener('click', () => {
+            window.location.href = 'mailto:info@kanchiuniv.ac.in?subject=Enquiry%20about%20Elite%202k24';
+        });
+
+        const mapButton = document.querySelector('.map-button');
+        mapButton.addEventListener('click', () => {
+            window.location.href = 'https://maps.app.goo.gl/2ZxpueMDRJZgc4xT6';
+        });
+
+        const calendarButton = document.querySelector('.calendar-button');
+        calendarButton.addEventListener('click', () => {
+            window.location.href = 'https://calendar.google.com/calendar/r/eventsadd';
+        });
+    </script>
+</body>
+
+</html>

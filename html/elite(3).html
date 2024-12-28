@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Download and Link</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="buttons">
+            <button id="downloadBtn">Download Brochure</button>
+            <button id="enquireBtn">Enquire Us</button>
+        </div>
+        <p>Know more about the Elite from below brochure.</p>
+    </div>
+    <script>
+        const downloadBtn = document.getElementById('downloadBtn');
+        const enquireBtn = document.getElementById('enquireBtn');
+
+        downloadBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.href = '../Images/invitation.webp';
+            link.download = '../Images/invitation.webpē';
+            link.click();
+        });
+
+        enquireBtn.addEventListener('click', () => {
+            window.location.href = 'https://kanchiuniv.ac.in';
+        });
+    </script>
+</body>
+
+</html>
